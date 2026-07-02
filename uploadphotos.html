@@ -1,0 +1,292 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Upload ID Photo - IDSnap AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#00563a",
+                        "surface-dim": "#d9dadc",
+                        "outline": "#757684",
+                        "tertiary": "#003d27",
+                        "outline-variant": "#c4c5d5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#173bab",
+                        "primary": "#00288e",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e7e8ea",
+                        "background": "#f8f9fb",
+                        "on-surface-variant": "#444653",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-secondary-fixed-variant": "#004883",
+                        "on-primary-fixed": "#001453",
+                        "on-secondary-container": "#003c70",
+                        "secondary-fixed": "#d4e3ff",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "primary-container": "#1e40af",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-primary-container": "#a8b8ff",
+                        "inverse-primary": "#b8c4ff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dde1ff",
+                        "on-surface": "#191c1e",
+                        "surface-container-low": "#f3f4f6",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed": "#001c39",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-tint": "#3755c3",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-bright": "#f8f9fb",
+                        "surface-container": "#edeef0",
+                        "on-error": "#ffffff",
+                        "secondary": "#0060ac",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#3fd298",
+                        "surface": "#f8f9fb",
+                        "inverse-surface": "#2e3132",
+                        "surface-variant": "#e1e2e4",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-container": "#64a8fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "1rem",
+                        "md": "1.5rem",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "container-max": "1200px",
+                        "lg": "2.5rem",
+                        "margin": "auto",
+                        "xl": "4rem",
+                        "xs": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .upload-dashed {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23757684' stroke-width='2' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+        .upload-dashed:hover {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%2300288e' stroke-width='2' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-container-low border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center h-16 px-gutter w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">zoomin</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">How it works</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Pricing</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">My Photos</a>
+<button class="bg-primary text-on-primary px-md py-xs rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Get Started</button>
+</nav>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<div class="flex-1 flex w-full max-w-container-max mx-auto overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col p-md gap-sm bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline w-64 shrink-0">
+<div class="mb-lg">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">zoomin</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Official Standards</p>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-sm p-sm bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg font-label-md text-label-md transition-all scale-95 duration-100" href="#">
+<span class="material-symbols-outlined">cloud_upload</span>
+                    Upload
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant rounded-lg font-label-md text-label-md transition-all" href="#">
+<span class="material-symbols-outlined">tune</span>
+                    Adjust
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant rounded-lg font-label-md text-label-md transition-all" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                    Verify
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant rounded-lg font-label-md text-label-md transition-all" href="#">
+<span class="material-symbols-outlined">download</span>
+                    Download
+                </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-gutter overflow-y-auto bg-surface-bright">
+<div class="max-w-4xl mx-auto">
+<!-- Progress Header -->
+<div class="mb-xl">
+<div class="flex justify-between items-end mb-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Upload Document Photo</h1>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Step 1 of 4</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/4 transition-all duration-500 ease-out"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Upload Zone -->
+<div class="lg:col-span-8">
+<div class="bg-surface border border-outline-variant rounded-xl p-lg flex flex-col items-center justify-center min-h-[400px] transition-all hover:border-primary group cursor-pointer relative overflow-hidden upload-dashed" id="drop-zone">
+<input accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-10" id="file-input" type="file">
+<div class="flex flex-col items-center text-center group-hover:scale-105 transition-transform duration-200">
+<div class="w-16 h-16 bg-primary-fixed flex items-center justify-center rounded-full text-primary mb-md group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[40px]">cloud_upload</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Drag &amp; drop your photo</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Supports JPG, PNG or HEIC. Max file size 10MB.</p>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-lg py-md rounded-lg shadow-md hover:bg-primary-container transition-colors">
+                                    Select File from Device
+                                </button>
+</div>
+</div>
+<!-- Info Alert -->
+<div class="mt-md bg-secondary-fixed/30 border border-secondary-fixed p-sm rounded-lg flex gap-sm items-start">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="font-label-md text-label-md text-on-secondary-fixed-variant">
+                                Your photo is processed securely on our servers and deleted immediately after conversion. We comply with all international biometric privacy standards.
+                            </p>
+</div>
+</div>
+<!-- Right Column: Requirements Checklist -->
+<div class="lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md">
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+                                PHOTO REQUIREMENTS
+                            </h4>
+<ul class="flex flex-col gap-sm">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary font-bold mt-0.5">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Plain white background</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">No shadows or textured walls</p>
+</div>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary font-bold mt-0.5">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Face centered</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Looking directly at the camera</p>
+</div>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary font-bold mt-0.5">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Neutral expression</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Eyes open and clearly visible</p>
+</div>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary font-bold mt-0.5">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">No glasses or hats</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Except for religious/medical reasons</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Sample Image -->
+<div class="rounded-xl overflow-hidden border border-outline-variant bg-surface relative">
+<img class="w-full aspect-[4/5] object-cover" data-alt="A professional high-quality passport style photo of a person with a neutral expression and a plain white background. The lighting is soft and even, highlighting facial features clearly without any shadows. The individual is looking directly into the camera lens with shoulders squared. Corporate modernism style, clean, professional, and officially compliant aesthetic with a high-key lighting setup." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi9p1tAYGKmKWhkIG9d0fXqw_ptWb7EMLcCEm2sCnY8tnjpd8tMEEgT1awm8S47yGxWQxgf13Xp5Z0Ov9RRA5VUhqlOZainJaDvA7a5mni1Snbhy6wRODsHRvyfHWst1SQ41V_TifpxM5-pDnTOIzFa7_Jf98I6Ie4gQoS1BghoaN4LUrqhdmsUUya3m9xh36ZERtrxZZRJZx21P6CCFwMwTKpVI96nk-3hJf8yTPaidgiUstybKA">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/90 text-on-primary p-xs text-center font-label-sm text-label-sm">
+                                SAMPLE COMPLIANT PHOTO
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-surface-container-low border-t border-outline-variant">
+<div class="w-full py-lg px-gutter flex flex-col md:flex-row justify-between items-center gap-md max-w-container-max mx-auto">
+<p class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">© 2024 zoomin. Official Document Standards Compliant.</p>
+<div class="flex gap-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-opacity opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-opacity opacity-80 hover:opacity-100" href="#">Help Center</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-opacity opacity-80 hover:opacity-100" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple drag and drop visual feedback
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.classList.add('bg-primary-fixed/20');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.classList.remove('bg-primary-fixed/20');
+            }, false);
+        });
+
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                // In a real app, this would trigger the upload/processing logic
+                alert('File "' + this.files[0].name + '" selected. Processing would begin now.');
+            }
+        });
+    </script>
+
+
+</body></html>
