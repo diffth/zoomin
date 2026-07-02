@@ -1,0 +1,283 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>IDSnap AI - Processing Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fb;
+        }
+        .id-card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .print-preview-container {
+            perspective: 1000px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#00563a",
+                        "surface-dim": "#d9dadc",
+                        "outline": "#757684",
+                        "tertiary": "#003d27",
+                        "outline-variant": "#c4c5d5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#173bab",
+                        "primary": "#00288e",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e7e8ea",
+                        "background": "#f8f9fb",
+                        "on-surface-variant": "#444653",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-secondary-fixed-variant": "#004883",
+                        "on-primary-fixed": "#001453",
+                        "on-secondary-container": "#003c70",
+                        "secondary-fixed": "#d4e3ff",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "primary-container": "#1e40af",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-primary-container": "#a8b8ff",
+                        "inverse-primary": "#b8c4ff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dde1ff",
+                        "on-surface": "#191c1e",
+                        "surface-container-low": "#f3f4f6",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed": "#001c39",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-tint": "#3755c3",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-bright": "#f8f9fb",
+                        "surface-container": "#edeef0",
+                        "on-error": "#ffffff",
+                        "secondary": "#0060ac",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#3fd298",
+                        "surface": "#f8f9fb",
+                        "inverse-surface": "#2e3132",
+                        "surface-variant": "#e1e2e4",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-container": "#64a8fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "1rem",
+                        "md": "1.5rem",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "container-max": "1200px",
+                        "lg": "2.5rem",
+                        "margin": "auto",
+                        "xl": "4rem",
+                        "xs": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar Component -->
+<header class="bg-surface dark:bg-surface-container-low border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
+<div class="flex justify-between items-center h-16 px-gutter w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">zoomin</div>
+<nav class="hidden md:flex gap-md items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">How it works</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Pricing</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 font-body-md text-body-md" href="#">My Photos</a>
+</nav>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-md py-xs rounded transition-all duration-200 ease-in-out font-label-md text-label-md">
+                Get Started
+            </button>
+</div>
+</header>
+<div class="flex pt-16 min-h-screen">
+<!-- SideNavBar Component (Hidden on mobile) -->
+<aside class="hidden lg:flex flex-col p-md gap-sm bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline fixed left-0 h-full w-64">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">zoomin</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Official Standards</p>
+</div>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">cloud_upload</span> Upload
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">tune</span> Adjust
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">verified_user</span> Verify
+                </a>
+<a class="flex items-center gap-sm p-sm bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">download</span> Download
+                </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 p-gutter max-w-container-max mx-auto w-full">
+<!-- Success Message Banner -->
+<div class="mb-lg bg-tertiary-container text-on-tertiary-container p-md rounded flex items-center gap-sm animate-in fade-in slide-in-from-top-4 duration-500">
+<span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
+<p class="font-body-md text-body-md">Your photo is now compliant with official standards.</p>
+</div>
+<!-- Page Title and Action -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-xl gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Review &amp; Download</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Select your required document formats below.</p>
+</div>
+<button class="flex items-center gap-xs px-md py-sm border border-primary text-primary hover:bg-primary-fixed-dim transition-colors rounded font-label-md text-label-md group">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-300">refresh</span>
+                    Try Another Photo
+                </button>
+</div>
+<!-- Bento Grid of Results -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Format 1: Driver's License -->
+<div class="md:col-span-6 bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Driver's License</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-base">Format: 3.5 x 4.5 cm</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-xs py-1 rounded-full text-[10px] font-bold">CERTIFIED</div>
+</div>
+<!-- Photo Preview Stage -->
+<div class="relative bg-surface-container-low rounded p-xl flex justify-center items-center border border-dashed border-outline-variant">
+<div class="bg-white p-1 id-card-shadow transition-transform hover:scale-105 duration-300">
+<!-- Processed Image Placeholder -->
+<div class="w-[132px] h-[170px] bg-cover bg-center" data-alt="A professional, high-resolution ID portrait of a person against a solid neutral light gray background. The subject is centered with a neutral expression, even lighting on both sides of the face, and no harsh shadows. The overall aesthetic is clinical, clean, and perfectly aligned with official government document standards, utilizing soft whites and professional corporate tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArCkMPhJRR6iehB7YUng_1xrkUS8gFh2LojU9L6MwzNmffSLMSUyvFfukdcqp2OYzLzMggTdg5s_RbkJxw72vmIjDMwZrC9IxT4NDUWCEWmnT-HY-J3Pz0Z4Kaxf_6GincSjrnvxv9wRSJx_dt9StnR8BdAW0KcicUZ7IoRu84DznpQM_eT2iRCgn20F2-45m_1P_uGQKOVbW7k555YYXyCHOAN8WI8xK6rbs2vAoXtaKvnZPxI08')">
+</div>
+</div>
+<!-- Dimensions Indicator -->
+<div class="absolute bottom-2 right-2 text-[10px] text-on-surface-variant font-mono">35mm x 45mm</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-sm mt-auto">
+<button class="flex items-center justify-center gap-xs bg-primary text-on-primary py-sm rounded hover:bg-primary-container transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">image</span>
+                            Download as JPG
+                        </button>
+<button class="flex items-center justify-center gap-xs border border-primary text-primary py-sm rounded hover:bg-primary-fixed transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+                            Print Ready PDF
+                        </button>
+</div>
+</div>
+<!-- Format 2: Resident ID -->
+<div class="md:col-span-6 bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Resident ID</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-base">Format: Biometric Standard</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-xs py-1 rounded-full text-[10px] font-bold">CERTIFIED</div>
+</div>
+<!-- Photo Preview Stage -->
+<div class="relative bg-surface-container-low rounded p-xl flex justify-center items-center border border-dashed border-outline-variant">
+<div class="bg-white p-1 id-card-shadow transition-transform hover:scale-105 duration-300">
+<!-- Processed Image Placeholder -->
+<div class="w-[150px] h-[150px] bg-cover bg-center" data-alt="A clinical biometric square ID photograph. The subject has a clear front-facing view, centered eyes, and a neutral facial expression. The lighting is bright and uniform, eliminating all shadows behind the ears and neck. The background is a stark, clean white, following strict international passport and residency visa guidelines. Corporate blue and gray color palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGTwlyu0Ci3j0cDjPfSc-RJthV6g6uVcz0Zq5wQtrUePmnP0tlvU-irDS6u9F6Lnow5PG77ANAX9fqDvnhRbZxfeSfPE5s7BWBMcOzRgOQQlwv4i4OwhcjfxQ_hL2xGQTs9BuHkD4coFx0oAhMC0lJUnfKgQbE-L2DaLz7nBdxpEpzG9p1Cg1Qt3qmozb1-kH94PURHsHWR4VZpFTTYH-qS3YYFcQbuXSAJt1dF-l6J0HQ3PeTQw4')">
+</div>
+</div>
+<div class="absolute bottom-2 right-2 text-[10px] text-on-surface-variant font-mono">1:1 Biometric</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-sm mt-auto">
+<button class="flex items-center justify-center gap-xs bg-primary text-on-primary py-sm rounded hover:bg-primary-container transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">image</span>
+                            Download as JPG
+                        </button>
+<button class="flex items-center justify-center gap-xs border border-primary text-primary py-sm rounded hover:bg-primary-fixed transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+                            Print Ready PDF
+                        </button>
+</div>
+</div>
+<!-- Information Panel -->
+<div class="md:col-span-12 bg-surface-container-high p-md rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-primary">info</span>
+<div class="flex-1">
+<p class="font-label-md text-label-md font-bold text-on-surface">Print Instructions</p>
+<p class="font-body-md text-body-md text-on-surface-variant">For the best results, use a high-quality photo printer with glossy paper. Ensure that your printer settings are set to 'Actual Size' or '100% Scale' to maintain the correct document dimensions.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer Component -->
+<footer class="bg-surface-container-highest dark:bg-surface-container-low border-t border-outline-variant mt-xl">
+<div class="w-full py-lg px-gutter flex flex-col md:flex-row justify-between items-center gap-md max-w-container-max mx-auto">
+<div class="flex flex-col gap-xs items-center md:items-start">
+<span class="font-label-md text-label-md font-bold text-on-surface">zoomin</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center md:text-left">© 2024 zoomin. Official Document Standards Compliant.</p>
+</div>
+<div class="flex gap-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline opacity-80 hover:opacity-100 transition-opacity" href="#">© 2024 zoomin. Official Document Standards Compliant.</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline opacity-80 hover:opacity-100 transition-opacity" href="#">© 2024 zoomin. Official Document Standards Compliant.</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline opacity-80 hover:opacity-100 transition-opacity" href="#">© 2024 zoomin. Official Document Standards Compliant.</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline opacity-80 hover:opacity-100 transition-opacity" href="#">© 2024 zoomin. Official Document Standards Compliant.</a>
+</div>
+</div>
+</footer>
+<!-- Micro-interaction script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.98)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+
+
+</body></html>
