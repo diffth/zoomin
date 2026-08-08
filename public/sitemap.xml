@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://idsnap.ai/ko</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://idsnap.ai/ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://idsnap.ai/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://idsnap.ai/ko"/>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://idsnap.ai/en</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://idsnap.ai/ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://idsnap.ai/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://idsnap.ai/ko"/>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://idsnap.ai/ko/upload</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://idsnap.ai/ko/upload"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://idsnap.ai/en/upload"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://idsnap.ai/ko/upload"/>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://idsnap.ai/en/upload</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://idsnap.ai/ko/upload"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://idsnap.ai/en/upload"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://idsnap.ai/ko/upload"/>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

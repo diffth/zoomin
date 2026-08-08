@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /ko
+Allow: /en
+Allow: /ko/upload
+Allow: /en/upload
+Disallow: /ko/my-photos
+Disallow: /en/my-photos
+Disallow: /ko/download
+Disallow: /en/download
+Disallow: /docs/
+
+Sitemap: https://idsnap.ai/sitemap.xml
