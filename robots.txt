@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-Allow: /index.html
-Allow: /uploadphotos.html
-Disallow: /myphotos.html
-Disallow: /downloadphotos.html
-Disallow: /docs/
-
-Sitemap: https://idsnap.ai/sitemap.xml
