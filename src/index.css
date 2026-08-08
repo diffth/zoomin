@@ -1,0 +1,253 @@
+@import 'tailwindcss';
+
+/* The legacy pages used `darkMode: "class"`. Keep class-based opt-in rather than
+   Tailwind v4's default `prefers-color-scheme`, so a future `.dark` on <html> drives it. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens — ported 1:1 from the shared `tailwind.config` <script> block
+   that every legacy page duplicated inline.
+   --------------------------------------------------------------------------- */
+@theme {
+  /* Colors ---------------------------------------------------------------- */
+  --color-primary: #00288e;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #1e40af;
+  --color-on-primary-container: #a8b8ff;
+  --color-primary-fixed: #dde1ff;
+  --color-primary-fixed-dim: #b8c4ff;
+  --color-on-primary-fixed: #001453;
+  --color-on-primary-fixed-variant: #173bab;
+  --color-inverse-primary: #b8c4ff;
+
+  --color-secondary: #0060ac;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #64a8fe;
+  --color-on-secondary-container: #003c70;
+  --color-secondary-fixed: #d4e3ff;
+  --color-secondary-fixed-dim: #a4c9ff;
+  --color-on-secondary-fixed: #001c39;
+  --color-on-secondary-fixed-variant: #004883;
+
+  --color-tertiary: #003d27;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #00563a;
+  --color-on-tertiary-container: #3fd298;
+  --color-tertiary-fixed: #6ffbbe;
+  --color-tertiary-fixed-dim: #4edea3;
+  --color-on-tertiary-fixed: #002113;
+  --color-on-tertiary-fixed-variant: #005236;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-background: #f8f9fb;
+  --color-on-background: #191c1e;
+  --color-surface: #f8f9fb;
+  --color-on-surface: #191c1e;
+  --color-surface-variant: #e1e2e4;
+  --color-on-surface-variant: #444653;
+  --color-surface-dim: #d9dadc;
+  --color-surface-bright: #f8f9fb;
+  --color-surface-tint: #3755c3;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f6;
+  --color-surface-container: #edeef0;
+  --color-surface-container-high: #e7e8ea;
+  --color-surface-container-highest: #e1e2e4;
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f3;
+
+  --color-outline: #757684;
+  --color-outline-variant: #c4c5d5;
+
+  /* Radii ----------------------------------------------------------------- */
+  --radius: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+
+  /* Spacing --------------------------------------------------------------- */
+  --spacing-base: 4px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+  --spacing-gutter: 24px;
+
+  /* Content widths.
+     ⚠️ The spacing keys above shadow Tailwind's container scale: v4 resolves
+     `max-w-<name>` against --spacing-* BEFORE --container-*, so `max-w-sm|md|lg|xl`
+     mean 1rem/1.5rem/2.5rem/4rem here — not 24rem/28rem/32rem/36rem. Use the
+     explicit tokens below (or `max-w-2xl`+, which are unaffected) for widths. */
+  --container-page: 1200px; /* legacy `max-w-container-max` */
+  --container-measure: 36rem; /* readable measure for body copy */
+  --container-panel: 28rem;
+  --container-rail: 24rem;
+
+  /* Typography ------------------------------------------------------------ */
+  /* Latin resolves to Inter, Hangul falls through to Noto Sans KR. */
+  --font-display: 'Inter', 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg: var(--font-display);
+  --font-headline-lg-mobile: var(--font-display);
+  --font-headline-md: var(--font-display);
+  --font-body-lg: var(--font-display);
+  --font-body-md: var(--font-display);
+  --font-label-md: var(--font-display);
+  --font-label-sm: var(--font-display);
+
+  /* Fluid: 32px on a 320px phone up to the original 48px from 1024px wide.
+     The legacy pages shipped a flat 48px, which overflowed small screens. */
+  --text-display: clamp(2rem, 1.545rem + 2.273vw, 3rem);
+  --text-display--line-height: 1.16;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 700;
+
+  /* Fluid: 24px (the unused `headline-lg-mobile` token) up to the original 32px. */
+  --text-headline-lg: clamp(1.5rem, 1.273rem + 1.136vw, 2rem);
+  --text-headline-lg--line-height: 1.25;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg--font-weight: 600;
+
+  --text-headline-lg-mobile: 24px;
+  --text-headline-lg-mobile--line-height: 32px;
+  --text-headline-lg-mobile--font-weight: 600;
+
+  --text-headline-md: 20px;
+  --text-headline-md--line-height: 28px;
+  --text-headline-md--font-weight: 600;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+
+  --text-label-md: 14px;
+  --text-label-md--line-height: 20px;
+  --text-label-md--letter-spacing: 0.01em;
+  --text-label-md--font-weight: 500;
+
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--letter-spacing: 0.05em;
+  --text-label-sm--font-weight: 600;
+}
+
+/* The legacy config set `borderRadius.full = 0.75rem`, so `rounded-full` was a
+   12px squircle, not a pill. v4 hardcodes `rounded-full` to infinity. `@utility`
+   cannot redefine a built-in, so append to the utilities layer — same specificity,
+   later source order wins. `rounded-pill` covers genuinely circular elements. */
+@layer utilities {
+  .rounded-full {
+    border-radius: 0.75rem;
+  }
+}
+
+@utility rounded-pill {
+  border-radius: calc(infinity * 1px);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-display);
+    background-color: var(--color-background);
+    color: var(--color-on-surface);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Components ported from the legacy inline <style> blocks
+   --------------------------------------------------------------------------- */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  /* Avoid the raw ligature text flashing before the icon font loads. */
+  font-family: 'Material Symbols Outlined', monospace;
+  line-height: 1;
+  user-select: none;
+}
+
+.material-symbols-outlined.is-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* uploadphotos.html — dashed drop-zone border that keeps a constant dash length */
+.upload-dashed {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23757684' stroke-width='2' stroke-dasharray='12%2c 12' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+.upload-dashed:hover,
+.upload-dashed.is-dragging {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%2300288e' stroke-width='2' stroke-dasharray='12%2c 12' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+/* myphotos.html — processing scanner */
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.scan-line {
+  height: 4px;
+  background: linear-gradient(to bottom, transparent, #1e40af, transparent);
+  box-shadow: 0 0 15px #1e40af;
+  animation: scan 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background-image: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* downloadphotos.html — physical-print card shadow */
+.id-card-shadow {
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -1px rgb(0 0 0 / 0.06);
+}
