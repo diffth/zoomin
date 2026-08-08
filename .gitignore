@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Per-machine Claude Code settings
+.claude/settings.local.json
+
+logs
+*.log
+npm-debug.log*
