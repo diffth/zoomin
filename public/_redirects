@@ -11,8 +11,8 @@
 /my-photos             /ko/my-photos  301
 /download              /ko/download   301
 
-# Language negotiation for the bare root: honour Accept-Language, fall back to ko.
-/                      /en            302  Language=en
+# Language negotiation for the bare root: redirect to default locale (ko).
+# Client router inside App.tsx will honor browser locale or saved preference.
 /                      /ko            302
 
 # SPA fallback — every other path is handled by the client router.
